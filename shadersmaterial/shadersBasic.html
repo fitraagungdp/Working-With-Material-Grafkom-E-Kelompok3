@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>Shaders Basic</title>
+
+    <style>
+    	body{
+    		margin: 0;
+    		overflow: hidden;
+    	}
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas"></canvas>
+
+<script src="three.js"></script>
+
+<script type="x-shader/x-vertex" id="vertexShader">
+    attribute float vertexDisplacement;
+    void main() 
+    {
+        vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_Position = projectionMatrix * modelViewPosition;
+    }
+</script>
+
+
+<script type="x-shader/x-fragment" id="fragmentShader">
+    void main() {
+        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+    }
+</script>
+
+
+<!-- <script src="materials.js"></script> -->
+<!-- <script src="lines.js"></script> -->
+<!-- <script src="points.js"></script> -->
+<!-- <script src="sprite.js"></script> -->
+<script src="shadersBasic.js"></script>
+
+</body>
+</html>

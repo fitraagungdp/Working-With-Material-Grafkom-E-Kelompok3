@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title>Mesh Basic Material</title>
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js" 
+        integrity="sha512-WoO4Ih0CDOSLYafy22wZD/mcJ7k0ESLqtQsFa6zFKnEUrbtuGU+GkLtVhgt93xa2qewG5gKEC6CWlN8OaCTSVg==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    ></script>
+    <style>
+    	body{
+    		margin: 0;
+    		overflow: hidden;
+    	}
+    </style>
+</head>
+<body>
+
+    <canvas id="myCanvas"></canvas>
+
+    <!-- <script type="module">
+
+        import { GUI } from "dat.gui.module.js";
+    </script> -->
+
+<script src="three.js"></script>
+<script src="MeshBasicMaterial.js"></script>
+
+<script>
+
+    
+    const gui = new dat.GUI();
+
+    let test = gui.addFolder("Position");
+
+    test.add(mesh.position, "x", -500, 500, 0.1).name("X position");
+    test.add(mesh.scale, "x", 1, 10, 0.5).name("X Scale");
+    test.add(mesh.rotation, "x", 0, Math.PI * 2).name("X Rotation");
+
+    let Material = gui.addFolder("Material")
+    Material.add(mesh.material, "wireframe");
+    Material.add(mesh, "visible").name("Visible Cube");
+    Material.add(mesh2, "visible").name("Visible ball");
+    Material.add(mesh3, "visible").name("Visible plane");
+
+    let folderRGB = gui.addFolder("RGB");
+
+    folderRGB.add(mesh.material.color, "r", 0, 1).name("color red");
+    folderRGB.add(mesh.material.color, "g", 0, 1).name("color green");
+    folderRGB.add(mesh.material.color, "b", 0, 1).name("color blue");
+
+    let palette = {
+        color: [0,255,255]
+    }
+
+    folderRGB.addColor(palette, 'color').onChange(function(value){
+        mesh.material.color.r = value[0]/255;
+        mesh.material.color.g = value[1]/255;
+        mesh.material.color.b = value[2]/255;
+
+    })
+
+
+</script>
+
+
+</body>
+</html>
